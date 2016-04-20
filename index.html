@@ -1,0 +1,149 @@
+<!DOCTYPE html>   <!-- html5的定义 -->
+<html lang="zh-CN">
+
+        <style type="text/css">
+body {
+    color:#fff;
+}
+#player,#list {
+    margin:10px;
+}
+a, a:visited, a:active {
+    color: gray;
+    text-decoration: none;
+}
+a:hover {
+    color: #1abc9c;
+    text-decoration: none;
+}
+#wrap {
+    background:#000;
+    margin:10px;
+    padding:10px 10px 10px 20px;
+    width:350px;
+    -webkit-box-shadow: 0 0 15px #000;
+    -moz-box-shadow: 0 0 15px #000;
+    box-shadow: 0 0 15px #000;
+    -webkit-backface-visibility: hidden; 
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+}
+#now,#mp3name {
+    font-size:12px;
+    font-family:宋体;
+    float:left;
+    margin:10px;
+}
+#title {
+    color:#fff;
+    margin:10px 10px 15px 10px;
+    font-style:italic;
+    font-weight:bold;
+    font-size:20px;
+}
+</style>
+    <head>
+        <meta charset="utf-8">
+        <!-- 在IE运行最新的渲染模式 -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!-- 初始化移动浏览显示 -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>单曲循环</title>
+        <!-- Bootstrap -->
+        <!-- 载入Bootstrap的CSS样式 -->
+        <link href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+
+    </head>
+    <body>
+
+        <div id="wrap">
+            <div id="list">
+                <div id="title">
+                    单曲循环
+                </div>
+                <li><a href="javascript:void(0);" onclick="playmusic(0)">if you</a></li>
+                <li><a href="javascript:void(0);" onclick="playmusic(1)">再见二丁目</a></li>
+                <li><a href="javascript:void(0);" onclick="playmusic(2)">春风十里</a></li>
+            </div>
+            <audio id="player" controls="true" onended="next1()">你的浏览器不支持</audio>
+            <div id="now">正在播放：</div>
+            <span id="mp3name">无</span>
+            <div style="clear:both"></div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+        <!-- 加入JQuerry和Bootstrap JS插件的支持 -->
+        <!-- 把CSS文件放在head中，把js放在body的最下面 -->
+        <script src="http://apps.bdimg.com/libs/jquery/2.0.0/jquery.min.js"></script>
+        <script src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+    </body>
+
+           <script type="text/javascript">
+
+           var currentSongNum;
+           currentSongNum = 0;
+
+           	var mySongsUrl = new Array();
+    var mySongsName = new Array();
+    	var my = document.getElementById("player"); 
+
+
+    // currentSongNum = i;
+
+    mySongsUrl[0] = "http://7xkxii.com1.z0.glb.clouddn.com/20151214Ifyou.mp3";
+    mySongsUrl[1] = "http://7xt681.com2.z0.glb.clouddn.com/%E5%86%8D%E8%A7%81%E4%BA%8C%E4%B8%81%E7%9B%AE.mp3";
+    mySongsUrl[2] = "http://7xt681.com2.z0.glb.clouddn.com/%E6%98%A5%E9%A3%8E%E5%8D%81%E9%87%8C.mp3";
+
+    mySongsName[0] = "if you";
+    mySongsName[1] = "再见二丁目";
+    mySongsName[2] = "春风十里";
+
+function playmusic(i){
+		
+    currentSongNum = i;
+
+    my.setAttribute("src",mySongsUrl[i]); 
+	document.getElementById("mp3name").innerText  = "正在获取歌曲...";
+	my.addEventListener("canplaythrough",
+		function() {
+			document.getElementById("mp3name").innerText  = mySongsName[i];
+		},false);        
+	my.play();
+
+
+}
+
+function next1() {
+
+		currentSongNum++;
+		if(currentSongNum>=mySongsUrl.length) {
+			currentSongNum = 0;
+		}
+		my.setAttribute("src",mySongsUrl[currentSongNum]); 
+		document.getElementById("mp3name").innerText  = "正在获取歌曲...";
+		my.addEventListener("canplaythrough",
+			function() {
+				document.getElementById("mp3name").innerText  = mySongsName[currentSongNum];
+			},false);        
+		my.play();
+	
+}
+</script>
+</html>
