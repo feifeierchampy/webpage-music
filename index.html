@@ -73,6 +73,8 @@ a:hover {
                 <li><a href="javascript:void(0);" onclick="playmusic(2)">春风十里</a></li>
                 <li><a href="javascript:void(0);" onclick="playmusic(3)">Oceans Deep</a></li>
                 <li><a href="javascript:void(0);" onclick="playmusic(4)">Safe and sound</a></li>
+				<li><a href="javascript:void(0);" onclick="playmusic(5)">给你看</a></li>
+				<li><a href="javascript:void(0);" onclick="playmusic(6)">I am you</a></li>
                 
             </div>
             <audio id="player" controls="true" onended="next1()">你的浏览器不支持</audio>
@@ -100,11 +102,17 @@ a:hover {
     mySongsUrl[2] = "http://7xt681.com2.z0.glb.clouddn.com/%E6%98%A5%E9%A3%8E%E5%8D%81%E9%87%8C.mp3";
     mySongsUrl[3] = "http://7xt681.com2.z0.glb.clouddn.com/Sons%20Of%20Day%20-%20Oceans%20Deep.mp3";
     mySongsUrl[4] = "http://7xt681.com2.z0.glb.clouddn.com/Safe%20and%20Sound.mp3";
+	mySongsUrl[5] = "http://7xt681.com1.z0.glb.clouddn.com/%E7%BB%99%E4%BD%A0%E7%9C%8B.mp3";
+	mySongsUrl[6] = "http://7xt681.com1.z0.glb.clouddn.com/Kim%20Taylor%20-%20I%20Am%20You.mp3"
+
     mySongsName[0] = "if you";
     mySongsName[1] = "再见二丁目";
     mySongsName[2] = "春风十里";
     mySongsName[3] = "Oceans Deep";
     mySongsName[4] = "Safe and Sound";
+	mySongsName[5] = "给你看";
+	mySongsName[6] = "I am you";
+
 function playmusic(i){
 		
     currentSongNum = i;
