@@ -76,6 +76,7 @@ a:hover {
 				<li><a href="javascript:void(0);" onclick="playmusic(5)">给你看</a></li>
 				<li><a href="javascript:void(0);" onclick="playmusic(6)">I am you</a></li>
 				<li><a href="javascript:void(0);" onclick="playmusic(7)">演员</a></li>
+				<li><a href="javascript:void(0);" onclick="playmusic(8)">你还要我怎样</a></li>
                 
             </div>
             <audio id="player" controls="true" onended="next1()">你的浏览器不支持</audio>
@@ -105,7 +106,8 @@ a:hover {
     mySongsUrl[4] = "http://7xt681.com2.z0.glb.clouddn.com/Safe%20and%20Sound.mp3";
 	mySongsUrl[5] = "http://7xt681.com1.z0.glb.clouddn.com/%E7%BB%99%E4%BD%A0%E7%9C%8B.mp3";
 	mySongsUrl[6] = "http://7xt681.com1.z0.glb.clouddn.com/Kim%20Taylor%20-%20I%20Am%20You.mp3"
-	muSongsUrl[7] = "http://7xt681.com1.z0.glb.clouddn.com/%E8%96%9B%E4%B9%8B%E8%B0%A6%20-%20%E6%BC%94%E5%91%98.mp3"
+	mySongsUrl[7] = "http://7xt681.com1.z0.glb.clouddn.com/%E8%96%9B%E4%B9%8B%E8%B0%A6%20-%20%E6%BC%94%E5%91%98.mp3"
+	mySongsUrl[8] = "http://7xt681.com1.z0.glb.clouddn.com/%E8%96%9B%E4%B9%8B%E8%B0%A6%20-%20%E4%BD%A0%E8%BF%98%E8%A6%81%E6%88%91%E6%80%8E%E6%A0%B7.mp3"
 
     mySongsName[0] = "if you";
     mySongsName[1] = "再见二丁目";
@@ -115,6 +117,7 @@ a:hover {
 	mySongsName[5] = "给你看";
 	mySongsName[6] = "I am you";
 	mySongsName[7] = "演员";
+	mySongsName[8] = "你还要我怎样";
 
 function playmusic(i){
 		
@@ -128,10 +131,7 @@ function playmusic(i){
 	my.play();
 }
 function next1() {
-		currentSongNum++;
-		if(currentSongNum>=mySongsUrl.length) {
-			currentSongNum = 0;
-		}
+		currentSongNum = getNextRandomNum(8);
 		my.setAttribute("src",mySongsUrl[currentSongNum]); 
 		document.getElementById("mp3name").innerText  = "正在获取歌曲...";
 		my.addEventListener("canplaythrough",
@@ -139,8 +139,13 @@ function next1() {
 				document.getElementById("mp3name").innerText  = mySongsName[currentSongNum];
 			},false);        
 		my.play();
-	
 }
+
+// generate a random int value from 0 to highValue
+function getNextRandomNum(highValue) {
+	return Math.floor(Math.random()*(highValue+1));
+}
+
 </script>
 
 <!-- 百度统计 -->
